@@ -13,31 +13,48 @@ class Header extends React.Component {
         this.getUserInfo = this.getUserInfo.bind(this);
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getUserInfo();
     }
 
     getUserInfo(){
-        axios.get("http://localhost:3000/api/current_user")
-            .then(res => res)
-            .then(({_id, username, googleId}) => {
+        axios.get('/api/current_user')
+            .then(response => {
+                //response returns data object, in addition to others
+                //that will contain the user info
+                const data = response.data;
                 this.setState({
-                    _id,
-                    username,
-                    googleId
-                }, () => console.log("Finished Fetching"));
-            });
+                    _id: data._id,
+                    username: data.username,
+                    googleId: data.googleId
+                });
+            })
+    }
+
+    renderNavbar(){
+        if(this.state.username){ //if user exists, return logout option
+            return (
+                <nav className="teal">
+                    <div className="nav-wrapper">
+                        <a href="/api/logout" className="brand-logo">Logout</a>
+                    </div>
+                </nav>
+            )
+        }
+        else{   //otherwise return option to login
+            return (
+                <nav>
+                    <div className="nav-wrapper">
+                        <a href="/auth/google" className="brand-logo">Login</a>
+                    </div>
+                </nav>
+            )
+        }
     }
 
     render() {
-        const test = this.state;
-        console.log(test);
         return (
-            <nav>
-                <div className="nav-wrapper">
-                    <a href="#" className="brand-logo">Hi {test.username}</a>
-                </div>
-            </nav>
+                this.renderNavbar()
         )
     }
 }

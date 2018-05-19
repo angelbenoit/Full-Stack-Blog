@@ -34,19 +34,29 @@ class Header extends React.Component {
     renderNavbar(){
         if(this.state.username){ //if user exists, return logout option
             return (
-                <nav className="teal">
-                    <div className="nav-wrapper">
-                        <a href="/api/logout" className="brand-logo">Logout</a>
-                    </div>
-                </nav>
+                    <nav className="teal">
+                        <div className="nav-wrapper">
+                            <a href="/" className="brand-logo center">Blog</a>
+                            <ul id="nav-mobile" className="left hide-on-small-and-down">
+                                <li><a href="/profile">
+                                    Profile
+                                </a></li>
+                                <li><a href="/api/logout">
+                                    Logout
+                                </a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
             )
         }
         else{   //otherwise return option to login
             return (
                 <nav>
                     <div className="nav-wrapper">
-                        <a href="/auth/google" className="brand-logo">Login</a>
-                    </div>
+                        <a href="/" className="brand-logo col s2">Blog</a>
+                        <a href="/auth/google" className="left col s1">Login</a>
+                       </div>
                 </nav>
             )
         }

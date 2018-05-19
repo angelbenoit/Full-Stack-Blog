@@ -2,19 +2,35 @@ import React, { Component } from 'react';
 import Login from './components/login';
 import Header from './components/Header';
 import Profile from './components/profile';
+import NewBlog from './components/NewBlog';
 import Homepage from './components/Homepage';
 import {BrowserRouter,Route} from 'react-router-dom';
 
 class App extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            blogList: []
+        };
+        this.updateBlogList = this.updateBlogList.bind(this);
+    }
+
+    updateBlogList(arr){
+        this.setState({ blogList: this.state.blogList.push(arr)});
+    }
+
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
           <div>
               <Header/>
-              <Route exact path='/' component={Homepage} />
+              <Route exact path='/' component={Homepage} updateBlog={this.updateBlogList}/>
               <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/newblog' component={NewBlog}/>
           </div>
         </BrowserRouter>
       </div>

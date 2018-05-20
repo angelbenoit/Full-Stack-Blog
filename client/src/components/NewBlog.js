@@ -1,19 +1,30 @@
 import React from 'react';
+import axios from 'axios';
+
 class NewBlog extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            title: '',
+            body: ''
+        };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    handleTitleChange(event) {
+        this.setState({title: event.target.value});
+    }
+
+    handleBodyChange(event) {
+        this.setState({body: event.target.value});
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        axios.post('/api/newBlog', this.state)
+            .then(res => console.log("Dog"));
         event.preventDefault();
     }
     render() {
@@ -22,19 +33,28 @@ class NewBlog extends React.Component {
                 <div className="row">
                     <div className="input-field col s6">
                         <input
-                            value={this.state.value}
+                            value={this.state.title}
                             type="text"
                             className="validate"
-                            onChange={this.handleChange} />
+                            onChange={this.handleTitleChange} />
                         <label className="active">Title</label>
                     </div>
+                </div>
+                <div className="row">
                     <div className="input-field col s6">
-                        <input
-                            value={this.state.value}
-                            type="text"
-                            className="validate"
-                            onChange={this.handleChange} />
+                        <textarea
+                            id="textarea1"
+                            value={this.state.body}
+                            className="materialize-textarea"
+                            onChange={this.handleBodyChange} />
                         <label className="active">Title</label>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="input-field col s6">
+                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i className="material-icons right">send</i>
+                        </button>
                     </div>
                 </div>
             </form>

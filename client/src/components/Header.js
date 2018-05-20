@@ -41,6 +41,9 @@ class Header extends React.Component {
                                 <li><a href="/profile">
                                     Profile
                                 </a></li>
+                                <li><a href="/newblog">
+                                    New Blog
+                                </a></li>
                                 <li><a href="/api/logout">
                                     Logout
                                 </a></li>

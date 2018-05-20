@@ -8,4 +8,4 @@ const blogSchema = new Schema({
     body: String
 });
 
-mongoose.model('blog', blogSchema);
+mongoose.model('blog-post', blogSchema);

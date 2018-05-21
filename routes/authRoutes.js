@@ -1,6 +1,7 @@
 const passport = require('passport');
-const express = require('express');
-//const app = express();
+const mongoose = require('mongoose');
+require('../models/Blog');
+const Blog = mongoose.model('Blog');
 
 module.exports = app => {
     app.get('/auth/google', passport.authenticate('google', {
@@ -17,11 +18,25 @@ module.exports = app => {
         res.redirect('/');
     });
 
-    app.get('/api/current_user', (req, res) => {
+    app.get('/api/current_user', (req, res) => {//use this url to fetch current user in react
         res.send(req.user);
+    });
+
+    app.get('/api/blog_list', (req, res) => { //use this url to fetch blogs in react
+        Blog.find({}, (err, blog) => {
+            if(err)
+                res.send("ERROR");
+
+            res.send(blog); //send json of all the blogs in the database
+        });
+
     });
 
     app.post('/api/newBlog', (req, res) => {
         console.log(req.body);
+        const blogPost = new Blog(req.body); //use req.body to get the
+        // object from the form that was submitted
+        blogPost.save(); //save the object to database
+        res.redirect("/")
     });
 };

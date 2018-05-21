@@ -24,11 +24,11 @@ class NewBlog extends React.Component {
 
     handleSubmit(event) {
         axios.post('/api/newBlog', this.state)
-            .then(res => console.log("Dog"));
-        event.preventDefault();
+            .then(res => () => this.props.redirectPage);
     }
     render() {
         return (
+
             <form onSubmit={this.handleSubmit} className="col s12 row">
                 <div className="row">
                     <div className="input-field col s6">

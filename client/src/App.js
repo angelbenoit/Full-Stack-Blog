@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Profile from './components/profile';
 import NewBlog from './components/NewBlog';
 import Homepage from './components/Homepage';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
     constructor(props){
@@ -13,10 +13,6 @@ class App extends Component {
         this.state = {
             blogList: []
         };
-    }
-
-    redirectPage(){
-        withRouter.history("/")
     }
 
   render() {
@@ -28,7 +24,7 @@ class App extends Component {
               <Route exact path='/' component={Homepage} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
-              <Route exact path='/newblog' component={NewBlog} redirectPage={App.redirectPage}/>
+              <Route exact path='/newblog' component={NewBlog} />
           </div>
         </BrowserRouter>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 class NewBlog extends React.Component {
     constructor(props) {
@@ -22,9 +23,12 @@ class NewBlog extends React.Component {
         this.setState({body: event.target.value});
     }
 
-    handleSubmit(event) {
+    handleSubmit() {
         axios.post('/api/newBlog', this.state)
-            .then(res => () => this.props.redirectPage);
+            .then(res => () => {
+                console.log("testing router");
+            });
+        this.props.history.push("/");
     }
     render() {
         return (
@@ -63,4 +67,4 @@ class NewBlog extends React.Component {
     }
 }
 
-export default NewBlog;
+export default withRouter(NewBlog);

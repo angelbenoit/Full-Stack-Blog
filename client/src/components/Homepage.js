@@ -25,8 +25,8 @@ class Homepage extends React.Component {
                 */
                 const list = res.data.map(blog => {
                     return (
-                        <div key={blog._id}>
-                            <h2>{blog.title}</h2>
+                        <div key={blog._id} className="blog-card">
+                            <h4>{blog.title}</h4>
                             <p>{blog.body}</p>
                         </div>
                     )
@@ -38,9 +38,11 @@ class Homepage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Welcome to BlogApp</h1>
-                {this.state.blogs}
+            <div className="homepage-background">
+                <div className="container">
+                    <h1 className="home-page-title">Welcome to BlogApp</h1>
+                    {this.state.blogs}
+                </div>
             </div>
         )
     }

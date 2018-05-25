@@ -17,12 +17,11 @@ class Profile extends React.Component {
     render() { 
         if(this.state.profile.googleId){
         return ( 
-            <div>
+            <div className="profile-page">
                 <h2>Hello <em>{this.state.profile.username}</em></h2>
                 <ul>
                     <li>GoogleID:{this.state.profile.googleId}</li>
                 </ul>
-                <a href="/api/logout">Logout</a>
             </div>
          )
         }

@@ -29,6 +29,7 @@ class Homepage extends React.Component {
                             <div className="card blue-grey">
                                 <div className="card-content white-text">
                                     <h4 className="card-title">{blog.title}</h4>
+                                    <h4 className="card-title">Created By: <em>{blog.author}</em></h4>
                                     <p className="blog-preview">{blog.body}</p>
                                 </div>
                             </div>

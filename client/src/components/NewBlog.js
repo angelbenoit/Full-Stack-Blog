@@ -32,8 +32,8 @@ class NewBlog extends React.Component {
     }
     render() {
         return (
-            <div className="formBackground">
-                <form onSubmit={this.handleSubmit} className="col s12 row">
+            <div>
+                <form onSubmit={this.handleSubmit} className="formBackground col s12 row">
                     <div className="row">
                         <div className="input-field col s6">
                             <input

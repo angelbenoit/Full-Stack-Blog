@@ -16,6 +16,10 @@ html, body {
     padding-bottom: 5%;
 }
 
+.col .row{
+    margin: 0 !important;
+}
+
 .card{
     width: 50%;
     text-align: center;
@@ -40,4 +44,17 @@ html, body {
 
 .card:hover{
     background-color: #00a796 !important;
+}
+
+.input-field{
+    position: relative !important;
+    left: 20% !important;
+}
+
+.profile-page{
+    background-color: #00a796;
+    padding-top: 15px;
+    color: white;
+    text-align: center;
+    height: 40rem;
 }

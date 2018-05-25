@@ -33,9 +33,14 @@ module.exports = app => {
     });
 
     app.post('/api/newBlog', (req, res) => {
-        console.log(req.body);
-        const blogPost = new Blog(req.body); //use req.body to get the
-        // object from the form that was submitted
+        const dataToBePosted = {
+            title: req.body.title,
+            body: req.body.body,
+            author: req.user.username
+        };
+
+        console.log(dataToBePosted);
+        const blogPost = new Blog(dataToBePosted);
         blogPost.save(); //save the object to database
         res.redirect("/")
     });

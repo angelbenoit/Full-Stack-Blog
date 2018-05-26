@@ -55,6 +55,12 @@ html, body {
     background-color: #00a796;
     padding-top: 15px;
     color: white;
-    text-align: center;
+
     height: 40rem;
+}
+
+.profile-text{
+    position: absolute;
+    left: 30%;
+    top: 30%;
 }

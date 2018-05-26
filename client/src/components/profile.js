@@ -18,10 +18,12 @@ class Profile extends React.Component {
         if(this.state.profile.googleId){
         return ( 
             <div className="profile-page">
-                <h2>Hello <em>{this.state.profile.username}</em></h2>
-                <ul>
-                    <li>GoogleID:{this.state.profile.googleId}</li>
-                </ul>
+                <div className="profile-text">
+                    <h2>Hello <em>{this.state.profile.username}</em></h2>
+                    <ul>
+                        <li>GoogleID:{this.state.profile.googleId}</li>
+                    </ul>
+                </div>
             </div>
          )
         }

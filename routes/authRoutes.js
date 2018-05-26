@@ -2,11 +2,12 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 require('../models/Blog');
 const Blog = mongoose.model('Blog');
+const User = mongoose.model('user');
 
 module.exports = app => {
     app.get('/auth/google', passport.authenticate('google', {
-        scope: ['profile', 'email']
-    })
+            scope: ['profile', 'email']
+        })
     );
 
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
@@ -36,10 +37,22 @@ module.exports = app => {
         const dataToBePosted = {
             title: req.body.title,
             body: req.body.body,
-            author: req.user.username
+            author: req.user.username,
+            blogId: req.user.id //blog will hold an id which is identical to user's id
         };
 
-        console.log(dataToBePosted);
+        /*
+        This updates the data that the user holds.
+        Each user holds an array of blogs, which are objects
+        When you go to '/api/current_user', the array will be
+        updated and a new blog post object will be added
+        */
+        User.findById(req.user._id, function (err, blog) {
+            blog.blogPosts.push(dataToBePosted);//push the new blog object to the array
+            blog.save();
+        });
+
+        //console.log(dataToBePosted);
         const blogPost = new Blog(dataToBePosted);
         blogPost.save(); //save the object to database
         res.redirect("/")

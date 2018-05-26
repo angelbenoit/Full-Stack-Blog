@@ -5,7 +5,8 @@ const blogSchema = new Schema({
     title: String,
     author: String,
     date: Date,
-    body: String
+    body: String,
+    blogId: String //blogId will be identical to user's id
 });
 
 mongoose.model('Blog', blogSchema);

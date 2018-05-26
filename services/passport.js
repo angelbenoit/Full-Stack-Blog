@@ -16,20 +16,20 @@ passport.deserializeUser((id, done) => {
 
 
 passport.use(new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback',
-    proxy: true
-}, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ googleId: profile.id, username: profile.displayName })
-        .then((existingUser) => {
-            if (existingUser) {
-                done(null, existingUser);
-            } else { //create new user if existingUser === false
-                new User({ googleId: profile.id }).save()
-                    .then((user) => done(null, user));
-            }
-        })
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
+        callbackURL: '/auth/google/callback',
+        proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
+        User.findOne({ googleId: profile.id, username: profile.displayName, blogPosts: profile.blogPosts })
+            .then((existingUser) => {
+                if (existingUser) {
+                    done(null, existingUser);
+                } else { //create new user if existingUser === false
+                    new User({ googleId: profile.id, username: profile.displayName, blogPosts: profile.blogPosts }).save()
+                        .then((user) => done(null, user));
+                }
+            })
 
-})
+    })
 );

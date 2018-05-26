@@ -30,7 +30,18 @@ module.exports = app => {
 
             res.send(blog); //send json of all the blogs in the database
         });
+    });
 
+    app.get('/api/blog/:id', (req, res) => {
+        const blogId = req.params.id; //gets the parameter, which is the id for the blog
+        Blog.findById(blogId, (err, blog) => {
+            if(err){
+                res.send("ERROR");
+            }
+            else{
+                res.send(blog);
+            }
+        })
     });
 
     app.post('/api/newBlog', (req, res) => {

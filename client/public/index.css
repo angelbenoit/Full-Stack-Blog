@@ -28,6 +28,14 @@ html, body {
     left: 25%;
 }
 
+.blog-title{
+    font-weight: 900 !important;
+}
+
+.blog-author{
+    font-size: 15px !important;
+}
+
 @media (max-width: 400px) {
     .home-title{
         font-size: 35px;

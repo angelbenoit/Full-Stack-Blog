@@ -30,14 +30,16 @@ class Homepage extends React.Component {
                         <div key={blog._id} className="col s12 m12">
                             <div className="card blue-grey">
                                 <div className="card-content white-text">
-                                    <h4 className="card-title">{blog.title}</h4>
-                                    <h4 className="card-title">Created By: <em>{blog.author}</em></h4>
+                                    <h4 className="card-title blog-title">{blog.title}</h4>
+                                    <h5 className="card-title blog-author">Created By: <em>{blog.author}</em></h5>
                                     <p className="blog-preview">{blog.body}</p>
                                     {
                                         this.state.currentUser === blog.blogId
-                                            ? <h4>Delete</h4>
+                                            ? <p>Delete</p>
                                             : ""
                                     }
+                                    {/*link to more info for specific blog is /blog/:id*/}
+                                    <a href={`/blog/${blog._id}`} className="">Read more</a>
                                 </div>
                             </div>
                         </div>

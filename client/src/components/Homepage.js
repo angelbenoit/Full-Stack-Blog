@@ -6,11 +6,13 @@ class Homepage extends React.Component {
         super(props);
 
         this.state = {
-            blogs: []
+            blogs: [],
+            currentUser: ""
         }
     }
 
     componentWillMount(){
+        this.getCurrentUser();
         this.fetchBlogs();
     }
 
@@ -31,6 +33,11 @@ class Homepage extends React.Component {
                                     <h4 className="card-title">{blog.title}</h4>
                                     <h4 className="card-title">Created By: <em>{blog.author}</em></h4>
                                     <p className="blog-preview">{blog.body}</p>
+                                    {
+                                        this.state.currentUser === blog.blogId
+                                            ? <h4>Delete</h4>
+                                            : ""
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -39,6 +46,13 @@ class Homepage extends React.Component {
                 console.log(list);
                 this.setState({ blogs: list }, () => console.log("Updating Array"));
             });
+    }
+
+    getCurrentUser(){
+        axios('/api/current_user')
+            .then(res => {
+                this.setState({ currentUser: res.data._id }, () => console.log(this.state.currentUser));
+            })
     }
 
     render() {

@@ -33,13 +33,8 @@ class Homepage extends React.Component {
                                     <h4 className="card-title blog-title">{blog.title}</h4>
                                     <h5 className="card-title blog-author">Created By: <em>{blog.author}</em></h5>
                                     <p className="blog-preview">{blog.body}</p>
-                                    {
-                                        this.state.currentUser === blog.blogId
-                                            ? <p>Delete</p>
-                                            : ""
-                                    }
                                     {/*link to more info for specific blog is /blog/:id*/}
-                                    <a href={`/blog/${blog._id}`} className="">Read more</a>
+                                    <a href={`/blog/${blog._id}`} className="read-more">Click here to read more</a>
                                 </div>
                             </div>
                         </div>

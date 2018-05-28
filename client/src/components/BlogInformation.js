@@ -43,6 +43,7 @@ class BlogInformation extends Component{
     }
 
     render(){
+        console.log(this.props.blog);
         return(
             <div>
                 <h2>{this.state.title}</h2>

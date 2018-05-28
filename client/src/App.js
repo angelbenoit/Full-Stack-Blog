@@ -10,10 +10,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 class App extends Component {
     constructor(props){
         super(props);
-
-        this.state = {
-            blogList: []
-        };
     }
 
   render() {
@@ -22,7 +18,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
               <Header/>
-              <Route exact path='/' component={Homepage} />
+              <Route exact path='/' component={Homepage}/>
               <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/newblog' component={NewBlog} />

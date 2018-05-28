@@ -1,31 +1,20 @@
-.page-layout{
+html, body{
     width: 100%;
     height: 100%;
     padding: 2rem;
     font-family: BlinkMacSystemFont, cursive;
 }
 
+.card-block{
+    position: relative;
+    left: 15%;
+    max-width: 800px;
+}
+
 .home-title{
     text-align: center;
     margin: 0;
     padding: 4rem 0;
-}
-
-.row{
-    background-color: #e1e1e1;
-    padding-bottom: 5%;
-}
-
-.col .row{
-    margin: 0 !important;
-}
-
-.card{
-    width: 50%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 25%;
 }
 
 .blog-title{
@@ -54,14 +43,19 @@
     background-color: #607D8B;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
     .home-title{
-        font-size: 35px;
+        font-size: 25px;
     }
 
     .card{
-        font-size: 10px !important;
+        width: 70%;
     }
+
+    .card-block{
+        max-width: 600px;
+    }
+
     .card-title{
         font-size: 15px !important;
         word-break: break-all;

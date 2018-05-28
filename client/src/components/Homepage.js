@@ -27,21 +27,24 @@ class Homepage extends React.Component {
                 */
                 const list = res.data.map(blog => {
                     return (
-                        <div key={blog._id} className="col s12 m12">
-                            <div className="card blue-grey">
-                                <div className="card-content white-text">
-                                    <h4 className="card-title blog-title">{blog.title}</h4>
-                                    <h5 className="card-title blog-author">Created By: <em>{blog.author}</em></h5>
-                                    <p className="blog-preview">{blog.body}</p>
-                                    {/*link to more info for specific blog is /blog/:id*/}
-                                    <a href={`/blog/${blog._id}`} className="read-more">Click here to read more</a>
+                        <div className="row card-block" key={blog._id}>
+                            <div className="col s12 m6">
+                                <div className="card blue-grey darken-1">
+                                    <div className="card-content white-text">
+                                        <span className="card-title">{blog.title}</span>
+                                        <p>Created by: <em>{blog.author}</em></p>
+                                        <p>{blog.body.substring(0,5)}...</p>
+                                    </div>
+                                    <div className="card-action">
+                                        <a href={`/blog/${blog._id}`}>Click Here to read more</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     )
                 });
                 console.log(list);
-                this.setState({ blogs: list }, () => console.log("Updating Array"));
+                this.setState({ blogs: list }, () => console.log(this.state.blogs));
             });
     }
 
@@ -54,7 +57,7 @@ class Homepage extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div>
                 <h1 className="home-title">Welcome to BlogApp</h1>
                 {this.state.blogs}
             </div>
